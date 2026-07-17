@@ -7,6 +7,7 @@ from aiogram.filters import CommandStart
 from aiogram.types import Message
 
 from config import BOT_TOKEN
+from handlers.chat import router as chat_router
 
 bot = Bot(
     token=BOT_TOKEN,
@@ -15,16 +16,18 @@ bot = Bot(
 
 dp = Dispatcher()
 
+dp.include_router(chat_router)
+
 
 @dp.message(CommandStart())
 async def start(message: Message):
     await message.answer(
         "🎬 <b>Добро пожаловать в КиноВечер AI!</b>\n\n"
-        "Я помогу подобрать фильм на любой вкус.\n\n"
-        "Напишите мне, например:\n"
-        "• Хочу комедию\n"
-        "• Посоветуй триллер\n"
-        "• Что посмотреть вечером?"
+        "Я помогу подобрать фильм с помощью искусственного интеллекта.\n\n"
+        "Напишите, например:\n"
+        "• Посоветуй комедию\n"
+        "• Что посмотреть вечером?\n"
+        "• Хочу фильм как Интерстеллар"
     )
 
 
