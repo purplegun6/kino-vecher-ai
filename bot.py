@@ -1,4 +1,8 @@
-import asyncio
+import asyncio 
+import logging  
+
+logging.basicConfig(level=logging.INFO)
+
 
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
@@ -7,7 +11,7 @@ from aiogram.filters import CommandStart
 from aiogram.types import Message
 
 from config import BOT_TOKEN
-from handlers.chat import router as chat_router
+from services.handlers.chat import router as chat_router
 
 bot = Bot(
     token=BOT_TOKEN,
